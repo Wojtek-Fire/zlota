@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/zlota/icons/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Golden Ratio Foundation</title>
+
+    <link rel="canonical" href="https://goldenratio.com/en/" />
+    <link rel="alternate" hreflang="pl" href="https://goldenratio.com/" />
+    <link rel="alternate" hreflang="en" href="https://goldenratio.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://goldenratio.com/" />
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The Golden Ratio Foundation">
+    <meta property="og:description" content="We&rsquo;re transforming global &ldquo;more&rdquo; into a conscious &ldquo;good&rdquo;">
+    <meta property="og:url" content="https://goldenratio.com/en/">
+    <meta property="og:image" content="https://goldenratio.com/og-image.jpg">
+    <meta property="og:locale" content="en_UK">
+    <script type="module" crossorigin src="/zlota/assets/main-C0ePDdVn.js"></script>
+    <link rel="stylesheet" crossorigin href="/zlota/assets/main-BDKVSwNw.css">
+  </head>
+
+
+
+
+  <body class="text-sec font-main antialiased min-h-full min-w-full flex flex-col">
+    
+    <div class="fixed inset-0 -z-10 bg-[linear-gradient(135deg,#eed09c,#E7C688)] bg-size-[100%_100%]"></div>
+
+    <header
+      id="start"
+      x-data="{ menuOpen: false }"
+      class="flex flex-col items-center"
+    >
+
+      <div class="navbar z-30">
+        <div class="containme relative flex items-center justify-between tab:justify-end">
+
+          <a
+            href="#start"
+            @click="menuOpen = false"
+            class="static tab:absolute tab:left-1/2 tab:-translate-x-1/2"
+          >
+            <div id="logo" class="cursor-pointer font-button font-bold text-xl tab:text-2xl"> <!--potem do usunięcia te klasy -->
+              <p>Golden Ratio</p>
+              <!-- tutaj svg -->
+            </div>
+          </a>
+
+          <!-- nadrzędny div po prawej z przyciskami menu -->
+          <div class="flex flex-row items-center des:mt-2">
+
+            <div
+              x-data="{
+                open: false,
+                toggle() {
+                  if (this.open) {
+                    return this.close()
+                  }
+  
+                  this.$refs.button.focus()
+  
+                  this.open = true
+                },
+                close(focusAfter) {
+                  if (! this.open) return
+  
+                  this.open = false
+  
+                  focusAfter && focusAfter.focus()
+                }
+              }"
+              x-on:keydown.escape.prevent.stop="close($refs.button)"
+              x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+              x-id="['dropdown-button']"
+              class="relative mr-5 tab:mr-6"
+            >
+              <!-- Language Button -->
+              <button
+                x-ref="button"
+                x-on:click="toggle()"
+                :aria-expanded="open"
+                :aria-controls="$id('dropdown-button')"
+                type="button"
+                class="relative flex flex-row items-center whitespace-nowrap justify-between cursor-pointer bg-lbialy10 hover:bg-lbialy20 pl-1.5 pr-0.5 rounded-full h-7 w-max gap-x-0.5 transition-colors duration-100 ease-in-out shadow-[0_0_5px_3px_rgba(0,0,0,0.05)]"
+              >
+
+                <div class="flex flex-row items-center">
+                  <div class="relative w-3.5 h-3.5 rounded-full shadow-[0_0_0_2px_theme(colors.seven)] overflow-hidden mr-1">
+                    <img
+                      src="/zlota/icons/Flag_of_the_UK2.png"
+                      alt="English"
+                      loading="eager"
+                      class="h-full w-auto absolute left-0 top-0 object-cover"
+                    />
+                  </div>
+                  <p class="font-button font-semibold text-xs leading-none">EN</p>
+                </div>
+      
+                <!-- Strzałka rozwijania panelu językowego -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-5">
+                  <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                </svg>
+              </button>
+      
+              <!-- Panel językowy wewnętrzny -->
+              <div
+                x-ref="panel"
+                x-show="open"
+                x-transition.origin.top.left
+                x-on:click.outside="close($refs.button)"
+                :id="$id('dropdown-button')"
+                x-cloak
+                class="absolute left-0 w-max rounded-md mt-1 z-10 origin-top-left font-button font-normal text-sm text-sec bg-bialy90 overflow-hidden shadow-[0_0_5px_3px_rgba(0,0,0,0.05)] tab:text-base"
+              >
+
+                <ul>
+                  <li>
+                    <a href="/zlota/" class="flex items-center whitespace-nowrap justify-between pl-3 pr-4 py-2 hover:bg-six focus-visible:bg-six transition-colors duration-100 ease-in-out">
+                      <div class="flex flex-row items-center">
+                        <img
+                          src="/zlota/icons/Flag_of_Poland2.png"
+                          alt="Polski"
+                          loading="lazy"
+                          class="w-4 h-4 mr-2 image-render-pixelated"
+                        />
+                        <p>Polski</p>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+
+              </div>
+              <!-- koniec panelu językowego -->
+            </div>
+            
+            <!-- alternatywny "hamburger" (MENU) dla des: -->
+            <div
+              x-data="{ open: false }"
+              class="relative hidden des:block"
+            >
+              <button
+                @click="open = !open"
+                :aria-expanded="open"
+                class="flex flex-col justify-center items-center text-base font-button font-semibold px-3 h-8 space-y-[0.38rem] cursor-pointer
+                bg-lbialy10 hover:bg-lbialy20 rounded-full shadow-[0_0_5px_3px_rgba(0,0,0,0.05)]"
+                aria-label="Menu"
+              >
+              MENU
+              </button>
+
+              <!-- PANEL ROZWIJANY DES: GŁÓWNEGO MENU -->
+              <div
+                x-show="open"
+                x-cloak
+                x-transition.origin.top.right
+                @click.outside="open = false"
+                class="absolute right-0 w-max rounded-md mt-1 z-10 origin-top-right bg-bialy90 text-sec overflow-hidden shadow-[0_0_5px_3px_rgba(0,0,0,0.05)]"
+              >
+
+                <ul class="font-button text-lg flex flex-col font-normal des:py-4">
+                  <li>
+                    <a
+                      href="#section1"
+                      @click="open = false"
+                      class="block px-4 py-2 hover:bg-six focus-visible:bg-six transition-colors duration-100 ease-in-out"
+                    >
+                      <span class="text-xs des:text-sm">01</span>&nbsp;&nbsp;Kim jesteśmy i co robimy?
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="#section2"
+                      @click="open = false"
+                      class="block px-4 py-2 hover:bg-six focus-visible:bg-six transition-colors duration-100 ease-in-out"
+                    >
+                      <span class="text-xs des:text-sm">02</span>&nbsp;&nbsp;Globalny kryzys rtęciowy
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="#section3"
+                      @click="open = false"
+                      class="block px-4 py-2 hover:bg-six focus-visible:bg-six transition-colors duration-100 ease-in-out"
+                    >
+                      <span class="text-xs des:text-sm">03</span>&nbsp;&nbsp;Ekonomia społeczna
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="#section4"
+                      @click="open = false"
+                      class="block px-4 py-2 hover:bg-six focus-visible:bg-six transition-colors duration-100 ease-in-out"
+                    >
+                      <span class="text-xs des:text-sm">04</span>&nbsp;&nbsp;Ekologia praktyczna
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="#section5"
+                      @click="open = false"
+                      class="block px-4 py-2 hover:bg-six focus-visible:bg-six transition-colors duration-100 ease-in-out"
+                    >
+                      <span class="text-xs des:text-sm">05</span>&nbsp;&nbsp;Projekty
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="#section6"
+                      @click="open = false"
+                      class="block px-4 py-2 hover:bg-six focus-visible:bg-six transition-colors duration-100 ease-in-out"
+                    >
+                      <span class="text-xs des:text-sm">06</span>&nbsp;&nbsp;Kontakt
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- KONIEC PANELU ROZWIJANEGO DES: GŁÓWNEGO MENU -->
+            </div>
+
+            <!-- hamburger smartfon i tab: -->
+            <div id="hamburger" class="des:hidden">
+              <button
+                @click="menuOpen = true"
+                class="flex flex-col justify-center items-center px-3 h-10 w-10 space-y-[0.3rem] cursor-pointer
+                bg-lbialy10 hover:bg-lbialy20 rounded-full shadow-[0_0_5px_3px_rgba(0,0,0,0.05)] tab:h-11 tab:w-11 tab:space-y-[0.38rem]"
+                aria-label="Menu"
+              >
+                <span class="block w-[1.4rem] h-0.5 bg-sec rounded-sm tab:w-[1.55rem]"></span>
+                <span class="block w-[1.4rem] h-0.5 bg-sec rounded-sm tab:w-[1.55rem]"></span>
+                <span class="block w-[1.4rem] h-0.5 bg-sec rounded-sm tab:w-[1.55rem]"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <nav
+        x-show="menuOpen"
+        x-cloak
+        x-transition:enter="transform transition ease-out duration-300"
+        x-transition:enter-start="translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transform transition ease-in duration-300"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="translate-x-full"
+        @click.outside="menuOpen = false"
+        class="fixed top-0 right-0 h-screen bg-bialy90 text-sec z-50 shadow-[0_0_5px_3px_rgba(0,0,0,0.05)] w-full tab:w-5/12 des:hidden"
+      >
+        <div class="flex justify-start p-4">
+          <div class="flex justify-end w-full des:w-4/5 des:max-w-[750px]">
+            <button
+              @click="menuOpen = false"
+              aria-label="Close menu"
+              class="text-5xl font-bold leading-none cursor-pointer mr-2 tab:mr-4"
+              >
+              &times;
+            </button>
+          </div>
+        </div>
+        <ul class="font-button font-normal text-lg flex flex-col mt-6 des:mt-18 des:text-2xl">
+          <li>
+            <a
+              href="#section1"
+              @click="menuOpen = false"
+              class="block px-8 py-4 hover:bg-six focus-visible:bg-six transition-colors duration-100 ease-in-out"
+            >
+              <span class="text-xs des:text-sm">01</span>&nbsp;&nbsp;Kim jesteśmy i co robimy?
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#section2"
+              @click="menuOpen = false"
+              class="block px-8 py-4 hover:bg-six focus-visible:bg-six transition-colors duration-100 ease-in-out"
+            >
+              <span class="text-xs des:text-sm">02</span>&nbsp;&nbsp;Globalny kryzys rtęciowy
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#section3"
+              @click="menuOpen = false"
+              class="block px-8 py-4 hover:bg-six focus-visible:bg-six transition-colors duration-100 ease-in-out"
+            >
+              <span class="text-xs des:text-sm">03</span>&nbsp;&nbsp;Ekonomia społeczna
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#section4"
+              @click="menuOpen = false"
+              class="block px-8 py-4 hover:bg-six focus-visible:bg-six transition-colors duration-100 ease-in-out"
+            >
+              <span class="text-xs des:text-sm">04</span>&nbsp;&nbsp;Ekologia praktyczna
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#section5"
+              @click="menuOpen = false"
+              class="block px-8 py-4 hover:bg-six focus-visible:bg-six transition-colors duration-100 ease-in-out"
+            >
+              <span class="text-xs des:text-sm">05</span>&nbsp;&nbsp;Projekty
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#section6"
+              @click="menuOpen = false"
+              class="block px-8 py-4 hover:bg-six focus-visible:bg-six transition-colors duration-100 ease-in-out"
+            >
+              <span class="text-xs des:text-sm">06</span>&nbsp;&nbsp;Kontakt
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <div id="hero section" class="section_intro w-full overflow-visible [contain:layout]">
+        <div id="hero content" class="containme relative overflow-visible flex flex-col items-center h-90 tab:mt-10 tab:h-140 des:mt-1 des:h-180">
+          <p class="absolute -translate-x-18 top-35 z-10 text-right font-hero font-bold text-2xl leading-tight tracking-tight w-max tab:font-normal tab:-translate-x-40 tab:top-43 tab:text-5xl des:text-6xl des:-translate-x-71 des:top-50">From relentless<br>&ldquo;more&rdquo;</p>
+          <div id="spiral1" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-5/12 z-0 overflow-visible w-[140%] aspect-square opacity-70 tab:opacity-100 tab:-translate-y-5/12 tab:w-180 des:w-200"></div>
+          <p class="absolute translate-x-18 bottom-10 z-10 text-left font-hero font-bold text-2xl leading-tight tracking-tight w-max tab:font-normal tab:translate-x-45 tab:bottom-23 tab:text-5xl des:text-6xl des:translate-x-71 des:bottom-28">to conscious<br>&ldquo;better&rdquo;</p>
+        </div>
+      </div>
+    </header>
+
+
+
+    <section id="introduction" class="section z-10">
+      <div class="containme_intro grid grid-cols-1 tab:grid-cols-2 gap-x-[6rem] gap-y-[1.55rem] py-12 tab:gap-x-[2.5rem] des:gap-x-[4rem]">
+        <p class="font-normal text-sm text-justify tab:text-base tab:leading-tight des:text-xl des:leading-[1.55rem] des:px-6">Idea utworzenia Fundacji zrodziła się w&nbsp;Ameryce Południowej, w&nbsp;lasach Amazonii. Założyciel Fundacji &mdash;&nbsp;Andrzej Ciechulski &mdash;&nbsp;zetknął się tam z&nbsp;licznymi dramatycznymi skutkami rabunkowego wydobycia złota. Dzięki jego inicjatywie, przez wiele lat, wielu ludzi pracowało nad stworzeniem ekologicznej technologii która mogłaby zastąpić rtęć i&nbsp;cyjanki używane powszechnie do roztwarzania złota przy jego wydobyciu.<br><br>
+        Opracowana technologia została nazwana G&#8209;ECO. W&nbsp;tym momencie jest ona jedyną jednocześnie skuteczną i&nbsp;całkowicie ekologiczną (zero toksyczności + zero kosztów środowiskowych) metodą pozyskiwania złota z&nbsp;rud okruchowych. Charakteryzuje się wyższą wydajnością od stosowanych obecnie metod rtęciowych i&nbsp;cyjankowych. Została opatentowana w&nbsp;latach 2023&ndash;2025 i&nbsp;jest chroniona prawnie na całym świecie, a&nbsp;wyłącznym właścicielem patentu na jej stosowanie jest Fundacja Golden Ratio.</p>
+        <p class="font-normal text-sm text-justify tab:text-base tab:leading-tight des:text-xl des:leading-[1.55rem] des:px-6">Fundacja powstała jako prywatna inicjatywa dobra publicznego. G&#8209;ECO jest naszym pierwszym zwycięstwem, ale chcemy działać szerzej. Zamierzamy w&nbsp;dalszym ciągu poszukiwać kolejnych rozwiązań ekologicznych i&nbsp;społecznych, które będą przeciwstwiać się logice kapitału uwięzionego przez chciwość i&nbsp;skrajny indywidualizm. Naszym celem jest tworzenie kapitału dobra i&nbsp;wspieranie poszukiwań nowoczesnych i ekologicznych technologii w&nbsp;dziedzinie żywności, produkcji i&nbsp;budownictwa.<br><br>
+        Finansujemy się sami, ze środków zdobytych dzięki własnym technologiom. Nie jesteśmy zależni od instytucji publicznych lub darowizn.<br><br>
+        W&nbsp;poszukiwaniu dalszych rozwiązań &bdquo;prostej produkcji” chcemy stać się nowoczesną platformą łączącą technologię, ekologię i&nbsp;gospodarkę lokalną oraz przeciwdziałającą negatywnym skutkom współczesnej makroekonomii i&nbsp;rozpadowi więzi społecznych.</p>
+      </div>
+    </section>
+
+
+
+
+
+    <section id="section1" class="section">
+
+      <div
+      x-data="{
+        active: false,
+        init() {
+          this.active = this.$el.classList.contains('sticky_progress--active')
+
+          const observer = new MutationObserver(() => {
+            this.active = this.$el.classList.contains('sticky_progress--active')
+          })
+
+          observer.observe(this.$el, {
+            attributes: true,
+            attributeFilter: ['class']
+          })
+        }
+      }"
+      class="sticky_progress containme grid grid-cols-1 tab:grid-cols-10 gap-x-4 gap-y-0 pt-12 pb-20"
+      >
+
+        <div class="sticky_fade self-baseline z-40 tab:text-right tab:sticky tab:top-12 tab:col-span-3">
+
+          <p
+          :class="active ? 'scale-0' : 'scale-100'"
+          class="text-[5rem] tab:text-[8rem] des:text-[10rem] font-normal text-tert font-title line-clamp-none leading-none transition-transform duration-500 ease-out origin-top-right"
+          >
+            01
+          </p>
+
+          <p
+          x-show="active"
+          x-transition.opacity.duration.300ms
+          class="relative place-self-end mr-6 font-hero font-bold leading-tight text-lg text-twenty tab:-translate-y-[7rem] tab:w-9/12 tab:text-xl des:w-10/12 des:text-3xl des:-translate-y-[9.5rem]"
+          >
+            Kim jesteśmy i&nbsp;co robimy?
+          </p>
+
+        </div>
+
+        <div class="relative self-baseline tab:col-span-7">
+
+          <p class="self-baseline font-hero font-bold leading-relaxed text-xl text-twenty bg-twentythree tab:w-max tab:text-3xl des:text-4xl">&nbsp;Kim jesteśmy i co robimy?&nbsp;</p>
+
+          <p class="paragraph">Fundację powołano do życia w 2025 roku w Złotoryi, na Dolnym Śląsku. Jednak ludzie ją tworzący pochodzą z różnych części Polski. Założycielem Fundacji jest Andrzej Ciechulski. W 2012 roku przeniósł się na 2 lata do Peru w Ameryce Południowej. Zetknął się tam z tragicznymi skutkami degradacji środowiska w Amazonii. W wyniku tych doświadczeń, poświęcił ponad 10 lat swojego życia poszukując rozwiązania problemu skażenia generowanego przez wydobycie złota. Dzięki jego inicjatywie, nieustępliwości, a także pracy zespołów badawczych i wsparciu różnych polskich ekspertów z dziedziny chemii, górnictwa i prawa, powstała technologia adhezyjnego pozyskiwania złota G&#8209;ECO, oraz inicjatywa Golden Ratio, ostatecznie przybierająca formę prawną prywatnej, operacyjnej fundacji dobra publicznego.<br><br>
+          W ramach prac nad projektem G&#8209;ECO, wizja Fundacji ewoluowała w stronę organizacji mającej na celu promocję tzw. ekonomii społecznej. Naszą ambicją jest przesunięcie ekonomicznego paradygmatu maksymalizacji zysków na paradygmat zaspokajania potrzeb społecznych. Chcemy poszukiwać transformacyjnych ścieżek przejścia do przynajmniej częściowo skutecznych, alternatywnych modelów gospodarczych, które mogłyby przeciwdziałać negatywnym skutkom neoliberalnego modelu kapitalizmu, choćby w skali lokalnej.<br><br>
+          Występujące obecnie lub mające wystąpić wkrótce zjawiska takie jak:</p>
+
+          <p class="paragraph_point relative w-10/12 tab:w-9/12 before:content-[''] before:block before:absolute before:inset-0 before:bg-tertiary-gradient before:rounded-xl before:-z-10">rozpowszechnienie niskonakładowych technologii ekologicznych, cyfrowych i sztucznej inteligencji</p>
+
+          <p class="paragraph_point relative w-10/12 tab:w-9/12 before:content-[''] before:block before:absolute before:inset-0 before:bg-tertiary-gradient before:rounded-xl before:-z-10">niemożliwy do utrzymania w dłuższym czasie koszt społeczny i środowiskowy gospodarek krajów rozwijających się</p>
+
+          <p class="paragraph_point relative w-10/12 tab:w-9/12 before:content-[''] before:block before:absolute before:inset-0 before:bg-tertiary-gradient before:rounded-xl before:-z-10">napięcia polityczne generowane przez nadmiernie zglobalizowaną gospodarkę</p>
+
+          <p class="paragraph_point relative w-10/12 tab:w-9/12 before:content-[''] before:block before:absolute before:inset-0 before:bg-tertiary-gradient before:rounded-xl before:-z-10">globalny zasięg ekstremalnie niebezpiecznych skażeń chemicznych generowanych przez koncentrację masowej produkcji w krajach o niewystarczającej kontroli ochrony środowiska</p>
+
+          <p class="paragraph mt-">muszą prędzej czy później doprowadzić do zmiany paradygmatu rozwoju ekonomicznego. Chcemy być katalizatorem tych zmian. Ich początek widzimy w realizacji projektów takich jak Złota Tarcza i Miasteczka Nowej Generacji.<br><br>
+          Pierwszym i obecnie nadrzędnym składnikiem naszej misji jest jednak ekologia praktyczna - tworzenie lub współtworzenie praktycznych rozwiązań technologicznych, które mogą przynieść realną zmianę sytuacji ekologicznej w sektorach szczególnie podatnych na dążenie do zysku za cenę dewastacji środowiska i ludzkiego zdrowia.<br><br>
+          Podsumowując, celami Fundacji są:</p>
+
+          <div class="relative mt-8 mx-4 w-full">
+            <div class="relative w-11/12 before:content-[''] before:block before:absolute before:inset-0 before:bg-quaternary-gradient before:rounded-xl before:-z-10">
+              <p class="absolute text-tert top-1 left-1 font-extrabold leading-none -translate-y-2 text-6xl">1</p>
+              <p class="paragraph_point pl-14">Wdrażanie rozwiązań technologicznych przeciwdziałających globalnemu kryzysowi rtęciowemu przy wydobyciu złota, w szczególności w rejonie Amazonii</p>
+            </div>
+          </div>
+
+          <div class="relative mt-8 mx-4 w-full">
+            <div class="relative w-11/12 before:content-[''] before:block before:absolute before:inset-0 before:bg-quaternary-gradient before:rounded-xl before:-z-10">
+              <p class="absolute text-tert top-1 left-1 font-extrabold leading-none -translate-y-2 text-6xl">2</p>
+              <p class="paragraph_point pl-14">Tworzenie warunków dla rozwoju ekonomii społecznej i jej trwałego zakorzenienia w systemie gospodarczym</p>
+            </div>
+          </div>
+
+          <div class="relative mt-8 mx-4 w-full">
+            <div class="relative w-11/12 before:content-[''] before:block before:absolute before:inset-0 before:bg-quaternary-gradient before:rounded-xl before:-z-10">
+              <p class="absolute text-tert top-1 left-1 font-extrabold leading-none -translate-y-2 text-6xl">3</p>
+              <p class="paragraph_point pl-14">Promocja ekologii praktycznej &mdash; innowacji technologicznych rozwiązujących realne problemy ekologiczne bez wymuszonych kosztów społecznych lub ekonomicznych</p>
+            </div>
+          </div>
+
+          <div class="relative mt-8 mx-4 w-full">
+            <div class="relative w-11/12 before:content-[''] before:block before:absolute before:inset-0 before:bg-quaternary-gradient before:rounded-xl before:-z-10">
+              <p class="absolute text-tert top-1 left-1 font-extrabold leading-none -translate-y-2 text-6xl">4</p>
+              <p class="paragraph_point pl-14">Opracowywanie i wspieranie opracowywania nowych technologii ekologicznych w obszarze produkcji żywności, odzieży i materiałów budownictwa małoskalowego</p>
+            </div>
+          </div>
+
+          <p class="paragraph_small">Możesz zapoznać się ze statutem naszej Fundacji, zawierającym też tekst preambuły który podsumowuje wartości i misję Fundacji:</p>
+
+          <a href="/zlota/GOLDEN RATIO statut.pdf" target="_blank" rel="noopener noreferrer">
+            <button class="button">Statut Golden Ratio (PDF) &gt;&gt;</button>
+          </a>
+          
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+    <section id="section2" class="section">
+
+      <div
+      x-data="{
+        active: false,
+        init() {
+          this.active = this.$el.classList.contains('sticky_progress--active')
+
+          const observer = new MutationObserver(() => {
+            this.active = this.$el.classList.contains('sticky_progress--active')
+          })
+
+          observer.observe(this.$el, {
+            attributes: true,
+            attributeFilter: ['class']
+          })
+        }
+      }"
+      class="sticky_progress containme grid grid-cols-1 tab:grid-cols-10 gap-x-4 gap-y-0 pt-12 pb-20"
+      >
+
+        <div class="sticky_fade self-baseline z-40 tab:text-right tab:sticky tab:top-12 tab:col-span-3">
+
+          <p
+          :class="active ? 'scale-0' : 'scale-100'"
+          class=" text-[5rem] tab:text-[8rem] des:text-[10rem] font-normal text-tert font-title line-clamp-none leading-none transition-transform duration-500 ease-out origin-top-right"
+          >
+            02
+          </p>
+
+          <p
+          x-show="active"
+          x-transition.opacity.duration.300ms
+          class="relative place-self-end mr-6 font-hero font-bold leading-tight text-lg text-twenty tab:-translate-y-[7rem] tab:w-9/12 tab:text-xl des:w-10/12 des:text-3xl des:-translate-y-[9.5rem]"
+          >
+            Globalny kryzys rtęciowy
+          </p>
+
+        </div>
+
+        <div class="relative self-baseline tab:col-span-7">
+
+          <p class="self-baseline font-hero font-bold leading-relaxed text-xl text-twenty bg-twentythree tab:w-max tab:text-3xl des:text-4xl">&nbsp;Globalny kryzys rtęciowy&nbsp;</p>
+
+          <p class="paragraph">Współczesny kryzys rtęciowy związany z wydobyciem złota jest uznawany za jeden z najpoważniejszych problemów środowiskowych i zdrowotnych w regionach tropikalnych, szczególnie w Amazonii, ale także w Afryce Subsaharyjskiej i Azji Południowo-Wschodniej. Głównym źródłem problemu jest tzw. rzemieślnicze i małoskalowe wydobycie złota (Artisanal and Small-Scale Gold Mining &mdash; ASGM), w którym rtęć wykorzystuje się do oddzielania złota od osadu i skał. Proces ten jest tani i prosty technologicznie, dlatego pozostaje powszechny w ubogich regionach świata mimo bardzo wysokich kosztów środowiskowych i zdrowotnych.<br><br>
+          Według danych Programu Środowiskowego ONZ (UNEP), sektor ASGM odpowiada za około 37&ndash;40% globalnych antropogenicznych emisji rtęci, co czyni go największym pojedynczym źródłem tego typu zanieczyszczeń na świecie. Na jedną tonę wyprodukowanego złota przypada w przybliżeniu emisja czterech ton rtęci. W przypadku ASGM, niemal cała rtęć użyta do roztwarzania złota przedostaje się bezpośrednio do środowiska w sposób niekontrolowany. Jedna trzecia emisji trafia do atmosfery, pozostałe dwie trzecie w większości do systemu wodnego. Szacuje się, że w wydobyciu tym uczestniczy od 10 do 15 milionów ludzi, ale sektor ten dostarcza tylko 12&ndash;15% światowej produkcji złota (przy blisko 40% udziale w całościowej emisji rtęci przez ludzkość)<sup>1 2 3</sup>.<br><br>
+          Amazonia stała się jednym z najbardziej dotkniętych regionów. Badania prowadzone w peruwiańskiej Amazonii wykazały, że emisje rtęci z kopalń są tak intensywne, iż lasy tropikalne zaczęły działać jak „magazyny” toksycznych zanieczyszczeń, akumulując rtęć w glebie, liściach, wodzie i organizmach zwierząt. Naukowcy podkreślają, że problem nie ogranicza się do samych terenów wydobycia — rtęć wchodzi do łańcuchów pokarmowych i rozprzestrzenia się na ogromne obszary Amazonii. Podczas wypalania lasów (deforestacji) pod uprawy rtęć uwalniana jest w dwóch kierunkach &mdash; do atmosfery i do ziemi<sup>4</sup>.<br><br>
+          W środowisku wodnym rtęć przekształca się w metylortęć — silnie neurotoksyczny związek kumulujący się w rybach. Średnie stężenie rtęci we włosach (włosy stanowią miernik stężenia w organizmie) mieszkańców całej Amazonii (obszaru porównywalnego do powierzchni Unii Europejskiej) przekracza 6 μg/g i znajduje się powyżej poziomu uznawanego za szkodliwy biologicznie. Mieszkańcy regionów położonych najbliżej obszarów wydobycia wykazują jednak poziomy ponad 10 μg/g &mdash; powyżej poziomu zatrucia. Obecność rtęci w organizmie człowieka związana jest z uszkodzeniami neurologicznymi, problemami rozwojowymi oraz chorobami nerek<sup>5 6</sup>.<br><br>
+          Problem ma również charakter międzynarodowy &mdash; zanieczyszczona w Amazonii woda trafia ostatecznie do Oceanu Atlantyckiego oraz na obszary połowu ryb sprzedawanych później na całym świecie. Rocznie Atlantyk przyjmuje od ok. 900 do 1200 ton rtęci, za którą w większości odpowiada działalność ASGM<sup>7 8</sup>. W ostatnich latach ilość emisji rtęci do wody rośnie. Podobnie emisja do powietrza (amalgamat złoto-rtęć jest wypalany do czystego złota przez wygotowanie rtęci bezpośrednio do atmosfery) powoduje osadzanie się rtęci setki lub nawet tysiące kilometrów od miejsca pierwotnej emisji.<br><br>
+          W odpowiedzi na skalę problemu społeczność międzynarodowa rozwija działania ograniczające użycie rtęci, przede wszystkim w ramach Konwencji z Minamaty oraz programów UNEP. W centrum tych działań znajduje się poszukiwanie alternatywnych metod wydobycia złota, formalizacja sektora ASGM oraz wsparcie ekonomiczne dla lokalnych społeczności. Praktyka pokazuje jednak, że te działania nigdy nie będą wystarczające dopóki nie zastosujemy rozwiązania technologicznego &mdash; wypierającego obecne metody rtęciowe.</p>
+
+          <p class="paragraph_tiny mt-7"><sup>1</sup><a href="https://www.unep.org/globalmercurypartnership/what-we-do/artisanal-and-small-scale-gold-mining-asgm">&nbsp;unep.org/globalmercurypartnership</a></p>
+          <p class="paragraph_tiny"><sup>2</sup><a href="https://wwfint.awsassets.panda.org/downloads/reporte_eng_2.pdf">&nbsp;Rubiano-Galvis, S., The Amazon Biome in the Face of Mercury Contamination - An overview of mercury trade, science, and policy in the Amazonian countries. WWF Report 2019</a></p>
+          <p class="paragraph_tiny"><sup>3</sup><a href="https://doi.org/10.1016/j.ecoenv.2023.114895">&nbsp;Crespo-Lopez, M. E., Arrifano, G. P., Augusto-Oliveira, M. et al. Mercury in the Amazon: The danger of a single story. Ecotoxicology and Environmental Safety, vol. 256, May 2023, 114895</a></p>
+          <p class="paragraph_tiny"><sup>4</sup><a href="https://doi.org/10.1038/s41467-022-27997-3">&nbsp;Gerson, J.R., Szponar, N., Zambrano, A.A. et al. Amazon forests capture high levels of atmospheric mercury pollution from artisanal gold mining. Nat. Commun. 13, 559 (2022)</a></p>
+          <p class="paragraph_tiny"><sup>5</sup><a href="https://doi.org/10.3390/toxics12030204">&nbsp;Martoredjo, I., Calvão Santos, L. B., Vilhena, J. C. E. et al. Trends in Mercury Contamination Distribution among Human and Animal Populations in the Amazon Region. Toxics 2024, 12(3), 204</a></p>
+          <p class="paragraph_tiny"><sup>6</sup><a href="https://doi.org/10.1016/j.neuro.2018.07.018">&nbsp;Gabriela de Paula Fonseca Arrifano, Rosa Del Carmen Rodriguez Martin-Doimeadios, María Jiménez-Moreno et al. Assessing mercury intoxication in isolated/remote populations: Increased S100B mRNA in blood in exposed riverine inhabitants of the Amazon. NeuroToxicology vol. 68, September 2018, 151-158</a></p>
+          <p class="paragraph_tiny"><sup>7</sup><a href="https://doi.org/10.1038/s41561-021-00793-2">&nbsp;Liu, M., Zhang, Q., Maavara, T. et al. Rivers as the largest source of mercury to coastal oceans worldwide. Nat. Geosci. 14, 672-677 (2021)</a><br></p>
+          <p class="paragraph_tiny"><sup>8</sup><a href="https://doi.org/10.1016/j.envres.2025.121129">&nbsp;Luiza Silva do Nascimento, Inácio Abreu Pestana, Michael Seidel et al. Mercury concentrations along the Amazon estuary and plume: Spatial trends and geochemical processes. Environmental Research, vol. 271, 2025, 121129</a><br></p>
+
+          <p class="paragraph_small mb-4 underline">Dowiedz się więcej:</p>
+
+          <a href="https://www.planetgold.org" target="_blank" rel="noopener noreferrer">
+            <button class="button">Projekt ONZ Planet GOLD &gt;&gt;</button>
+          </a>
+
+          <a href="https://www.unep.org/globalmercurypartnership/" target="_blank" rel="noopener noreferrer">
+            <button class="button">Global Mercury partnership (eng) &gt;&gt;</button>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+    <section id="section3" class="section">
+
+      <div
+      x-data="{
+        active: false,
+        init() {
+          this.active = this.$el.classList.contains('sticky_progress--active')
+
+          const observer = new MutationObserver(() => {
+            this.active = this.$el.classList.contains('sticky_progress--active')
+          })
+
+          observer.observe(this.$el, {
+            attributes: true,
+            attributeFilter: ['class']
+          })
+        }
+      }"
+      class="sticky_progress containme grid grid-cols-1 tab:grid-cols-10 gap-x-4 gap-y-0 pt-12 pb-20"
+      >
+
+        <div class="sticky_fade self-baseline z-40 tab:text-right tab:sticky tab:top-12 tab:col-span-3">
+
+          <p
+          :class="active ? 'scale-0' : 'scale-100'"
+          class=" text-[5rem] tab:text-[8rem] des:text-[10rem] font-normal text-tert font-title line-clamp-none leading-none transition-transform duration-500 ease-out origin-top-right"
+          >
+            03
+          </p>
+
+          <p
+          x-show="active"
+          x-transition.opacity.duration.300ms
+          class="relative place-self-end mr-6 font-hero font-bold leading-tight text-lg text-twenty tab:-translate-y-[7rem] tab:w-9/12 tab:text-xl des:w-10/12 des:text-3xl des:-translate-y-[9.5rem]"
+          >
+            Ekonomia społeczna
+          </p>
+
+        </div>
+
+        <div class="relative self-baseline tab:col-span-7">
+
+          <p class="self-baseline font-hero font-bold leading-relaxed text-xl text-twenty bg-twentythree tab:w-max tab:text-3xl des:text-4xl">&nbsp;Ekonomia społeczna&nbsp;</p>
+
+          <p class="paragraph">Współczesna debata nad ekonomią społeczną coraz częściej wykracza poza traktowanie jej jako niszowego sektora uzupełniającego państwo i rynek. Ekonomia społeczna nie jest nurtem myśli socjalnej lub socjalistycznej. Głównym obszarem jej zainteresowań są działające w lokalnej skali przedsiębiorstwa społeczne, oraz spółki działające w celach realizacji konkretnych celów biznesowych lub pożytku publicznego. W literaturze międzynarodowej rozwija się ujęcie określane jako ekonomia społeczna i solidarna (ESS), które nadaje tej koncepcji wymiar systemowy. W tym podejściu ESS nie jest jedynie zbiorem instytucji (np. spółdzielni czy organizacji pozarządowych), lecz reprezentuje odmienną logikę organizacji życia gospodarczego.</p>
+
+          <p class="paragraph_small">Dowiedz się więcej na stronie Ministerstwa Rodziny, Pracy i&nbsp;Polityki Społecznej:</p>
+
+          <a href="https://www.ekonomiaspoleczna.gov.pl/czym-jest-ekonomia-spoleczna/" target="_blank" rel="noopener noreferrer">
+            <button class="button_small tab:mr-4">Czym jest ekonomia społeczna i&nbsp;solidarna?&nbsp;&gt;&gt;</button>
+          </a>
+
+          <p class="paragraph">Centralnym założeniem tego nurtu jest przesunięcie priorytetów: z globalnej konkurencji finansowej na współpracę w ramach mniejszych struktur społecznych, oraz z dominacji kapitału na prymat struktur społecznych. W tym sensie ESS bywa interpretowana jako próba przezwyciężenia ograniczeń współczesnego globalistycznego kapitalizmu —&nbsp;zwłaszcza w kontekście narastających nierówności, kryzysów społecznych i środowiskowych oraz erozji więzi wspólnotowych.<br><br>
+          W literaturze podkreśla się, że ekonomia społeczna i solidarna może pełnić rolę zalążka alternatywnego mikrosystemu gospodarczego, opartego na takich zasadach jak:</p>
+
+          <p class="paragraph_point relative w-10/12 tab:w-9/12 before:content-[''] before:block before:absolute before:inset-0 before:bg-quinary-gradient before:rounded-xl before:-z-10">demokratyczne zarządzanie i&nbsp;partycypacja</p>
+
+          <p class="paragraph_point relative w-10/12 tab:w-9/12 before:content-[''] before:block before:absolute before:inset-0 before:bg-quinary-gradient before:rounded-xl before:-z-10">wspólnotowe lub hybrydowe formy własności</p>
+
+          <p class="paragraph_point relative w-10/12 tab:w-9/12 before:content-[''] before:block before:absolute before:inset-0 before:bg-quinary-gradient before:rounded-xl before:-z-10">reinwestowanie nadwyżek w&nbsp;cele społeczne</p>
+
+          <p class="paragraph_point relative w-10/12 tab:w-9/12 before:content-[''] before:block before:absolute before:inset-0 before:bg-quinary-gradient before:rounded-xl before:-z-10">zakorzenienie w&nbsp;społecznościach lokalnych</p>
+
+          <p class="paragraph">Do tych klasycznych elementów możemy dodać podstawowy dla naszej Fundacji aspekt regionalizacji ekonomii. Wierzymy, że dzięki upowszechnieniu wiedzy technologicznej oraz bardzo ostrożnemu i planowemu działaniu można zrealizować wizję obecną do tej pory tylko w niektórych nurtach fantastyki naukowej. Współczesna technologia może być użyta do tworzenia małoskalowych ośrodków produkcyjnych, niezależnych względem globalnie zcentralizowanych ośrodków wytwórczych. Jesteśmy świadomi, że stworzenie działających struktur gospodarczych opartych o lokalne centra wytwórcze musi zająć lata i być poprzedzone wieloma wstępnymi krokami. Zmiana musi jednak nadejść i możemy albo czekać bezmyślnie na pojawienie się nowego paradygmatu gospodarczego gdziekolwiek indziej na świecie, albo podjąć własne działania w tym kierunku.<br><br>
+          Obecnie trendy ekonomii społecznej i solidarnej działają jakby obok głównego nurtu globalnego kapitalizmu. Nadal żyjemy w czasach koncentracji środków produkcji i wiedzy w dużych, globalnych centrach wytwórczych. Zmiana tej sytuacji następuje dzięki rozwojowi sztucznej inteligencji, powszechnemu dostępowi do informacji oraz demokratyzacji dostępu do wiedzy technologicznej. Te zjawiska z czasem staną się podstawą zdecentralizowanych ośrodków gospodarczych, które będą mogły być skupione wokół społeczności (ewentualnie społeczeństw) lokalnych.<br><br>
+          Chcemy być pierwszą Fundacją w Polsce, która wykorzysta w praktyce koncepcje ekonomii społecznej, a pośrednio przyczyni się też do krystalizacji założeń tej nadal nierozwiniętej gałęzi nauk ekonomicznych i socjologii. Będziemy podejmować projekty których celem będzie stworzenie pierwszych średnioskalowych prób przezwyciężenia nadrzędności interesu globalnych grup kapitałowych, zaniżającego możliwości rozwoju technologicznego i ekonomicznego współczesnych społeczeństw lokalnych i ponadlokalnych.</p>
+          
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+    <section id="section4" class="section">
+
+      <div
+      x-data="{
+        active: false,
+        init() {
+          this.active = this.$el.classList.contains('sticky_progress--active')
+
+          const observer = new MutationObserver(() => {
+            this.active = this.$el.classList.contains('sticky_progress--active')
+          })
+
+          observer.observe(this.$el, {
+            attributes: true,
+            attributeFilter: ['class']
+          })
+        }
+      }"
+      class="sticky_progress containme grid grid-cols-1 tab:grid-cols-10 gap-x-4 gap-y-0 pt-12 pb-20"
+      >
+
+        <div class="sticky_fade self-baseline z-40 tab:text-right tab:sticky tab:top-12 tab:col-span-3">
+
+          <p
+          :class="active ? 'scale-0' : 'scale-100'"
+          class=" text-[5rem] tab:text-[8rem] des:text-[10rem] font-normal text-tert font-title line-clamp-none leading-none transition-transform duration-500 ease-out origin-top-right"
+          >
+            04
+          </p>
+
+          <p
+          x-show="active"
+          x-transition.opacity.duration.300ms
+          class="relative place-self-end mr-6 font-hero font-bold leading-tight text-lg text-twenty tab:-translate-y-[7rem] tab:w-9/12 tab:text-xl des:w-10/12 des:text-3xl des:-translate-y-[9.5rem]"
+          >
+            Ekologia praktyczna
+          </p>
+
+        </div>
+
+        <div class="relative self-baseline tab:col-span-7">
+
+          <p class="self-baseline font-hero font-bold leading-relaxed text-xl text-twenty bg-twentythree tab:w-max tab:text-3xl des:text-4xl">&nbsp;Ekologia praktyczna&nbsp;</p>
+
+          <p class="paragraph">Pojęcie „ekologia praktyczna” powstało poprzez skupienie uwagi na jednym, szczególnie istotnym wymiarze działań proekologicznych: na wynajdywaniu, rozwijaniu i upowszechnianiu technologii, które są jednocześnie bardziej przyjazne dla środowiska i bezpieczniejsze dla zdrowia człowieka. W tym ujęciu ochrona środowiska nie sprowadza się wyłącznie do ograniczania konsumpcji, nakładania regulacji czy wskazywania zagrożeń wynikających z działalności gospodarczej. Jej centralnym elementem staje się tworzenie realnych alternatyw dla procesów i technologii powodujących zanieczyszczenia, degradację ekosystemów lub szkody zdrowotne.<br><br>
+          Podstawowym założeniem ekologii praktycznej jest przekonanie, że trwałe zmiany społeczne zachodzą najskuteczniej wtedy, gdy rozwiązania bardziej ekologiczne okazują się jednocześnie użyteczne, dostępne i ekonomicznie konkurencyjne wobec rozwiązań dotychczasowych. Historia rozwoju cywilizacyjnego pokazuje, że nowe technologie często nie zastępują starych dlatego, że zostały prawnie narzucone, lecz dlatego, że oferują wyższą wydajność, niższe koszty lub większe bezpieczeństwo. Z tego punktu widzenia kluczowym zadaniem staje się wspieranie innowacji, które pozwalają osiągać te same cele gospodarcze i społeczne przy mniejszym obciążeniu środowiska naturalnego.<br><br>
+          Ekologia praktyczna koncentruje się zatem nie tyle na opisie problemów ekologicznych, ile na poszukiwaniu konkretnych sposobów ich rozwiązywania. Jej celem jest stopniowe wypieranie technologii i praktyk szkodliwych przez rozwiązania lepsze pod względem środowiskowym, zdrowotnym i ekonomicznym. W takim ujęciu postęp technologiczny nie jest przeciwieństwem ochrony przyrody, lecz jednym z jej najważniejszych narzędzi. To właśnie dzięki rozwojowi nowych metod produkcji, pozyskiwania energii, transportu czy gospodarowania zasobami możliwe staje się ograniczanie negatywnego wpływu człowieka na środowisko bez rezygnacji z korzyści płynących z rozwoju cywilizacyjnego.</p>
+          
+        </div>
+      </div>
+    </section>
+
+    
+
+
+
+
+    <section id="section5" class="section">
+
+      <div class="containme grid grid-cols-1 tab:grid-cols-10 gap-x-4 gap-y-0 pt-12 pb-20">
+
+        <p class="self-baseline font-normal text-tert font-title line-clamp-none leading-none text-[5rem] tab:text-right tab:top-0 tab:text-[8rem] des:text-[10rem] tab:col-span-3">05</p>
+
+        <div class="relative self-baseline tab:col-span-7">
+
+          <p class="self-baseline font-hero font-bold leading-relaxed text-xl text-twenty bg-twentythree tab:w-max tab:text-3xl des:text-4xl">&nbsp;Projekty&nbsp;</p>
+
+          <div class="carousel">
+
+            <div class="carousel-track">
+
+              <article x-data="{ expanded: false }" class="carousel-card">
+                <img src="/zlota/1.jpg" loading="eager" alt="Stop rtęci">
+                <h3 x-ref="heading">STOP dla rtęci w kopalniach złota Amazonii i&nbsp;innych dziewiczych regionach świata: G&#8209;ECO</h3>
+                <div x-ref="content"
+                  :style="
+                    expanded
+                    ? `max-height:${$refs.content.scrollHeight}px; --fade-start:100%`
+                    : `max-height:calc(23vh - ${$refs.heading.offsetHeight}px); --fade-start:40%`
+                  "
+                  class="card_content">
+                  <p>Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów.<br><span class="block text-xs leading-[0.8rem]">&nbsp;</span>
+                  Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. </p>
+                  <button class="button_small self-end tab:mr-4">Przejdź do G&#8209;ECO &gt;&gt;</button>
+                </div>
+                <button @click="expanded = !expanded" class="z-10 flex mt-1 items-center justify-center cursor-pointer bg-trans hover:brightness-105 transition-all duration-200">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-8 stroke-twentytwo tab:size-10 transition-all duration-500" :class="{ 'rotate-180': expanded }">
+                    <polyline points="21,9 12,16 3,9"></polyline>
+                  </svg>
+                </button>
+              </article>
+
+              <article x-data="{ expanded: false }" class="carousel-card">
+                <img src="/zlota/2.jpg" loading="eager" alt="Złota tarcza">
+                <h3 x-ref="heading">Złota Tarcza</h3>
+                <div x-ref="content"
+                  :style="
+                    expanded
+                    ? `max-height:${$refs.content.scrollHeight}px; --fade-start:100%`
+                    : `max-height:calc(23vh - ${$refs.heading.offsetHeight}px); --fade-start:40%`
+                  "
+                  class="card_content">
+                  <p>Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów.<br><span class="block text-xs leading-[0.8rem]">&nbsp;</span>
+                  Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. </p>
+                </div>
+                <button @click="expanded = !expanded" class="z-10 flex mt-1 items-center justify-center cursor-pointer bg-trans hover:brightness-105 transition-all duration-200">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-8 stroke-twentytwo tab:size-10 transition-all duration-500" :class="{ 'rotate-180': expanded }">
+                    <polyline points="21,9 12,16 3,9"></polyline>
+                  </svg>
+                </button>
+              </article>
+
+              <article x-data="{ expanded: false }" class="carousel-card">
+                <img src="/zlota/3.jpg" loading="lazy" alt="Kurs Społecznego Przedsiębiorcy">
+                <h3 x-ref="heading">Kurs Społecznego Przedsiębiorcy połączony ze Studium Ekonomii Społecznej</h3>
+                <div x-ref="content"
+                  :style="
+                    expanded
+                    ? `max-height:${$refs.content.scrollHeight}px; --fade-start:100%`
+                    : `max-height:calc(23vh - ${$refs.heading.offsetHeight}px); --fade-start:40%`
+                  "
+                  class="card_content">
+                  <p>Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów.<br><span class="block text-xs leading-[0.8rem]">&nbsp;</span>
+                  Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. </p>
+                </div>
+                <button @click="expanded = !expanded" class="z-10 flex mt-1 items-center justify-center cursor-pointer bg-trans hover:brightness-105 transition-all duration-200">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-8 stroke-twentytwo tab:size-10 transition-all duration-500" :class="{ 'rotate-180': expanded }">
+                    <polyline points="21,9 12,16 3,9"></polyline>
+                  </svg>
+                </button>
+              </article>
+
+              <article x-data="{ expanded: false }" class="carousel-card">
+                <img src="/zlota/4.jpg" loading="lazy" alt="Miasteczka nowej generacji">
+                <h3 x-ref="heading">Miasteczka nowej generacji</h3>
+                <div x-ref="content"
+                  :style="
+                    expanded
+                    ? `max-height:${$refs.content.scrollHeight}px; --fade-start:100%`
+                    : `max-height:calc(23vh - ${$refs.heading.offsetHeight}px); --fade-start:40%`
+                  "
+                  class="card_content">
+                  <p>Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów.<br><span class="block text-xs leading-[0.8rem]">&nbsp;</span>
+                  Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. </p>
+                </div>
+                <button @click="expanded = !expanded" class="z-10 flex mt-1 items-center justify-center cursor-pointer bg-trans hover:brightness-105 transition-all duration-200">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-8 stroke-twentytwo tab:size-10 transition-all duration-500" :class="{ 'rotate-180': expanded }">
+                    <polyline points="21,9 12,16 3,9"></polyline>
+                  </svg>
+                </button>
+              </article>
+
+              <article x-data="{ expanded: false }" class="carousel-card">
+                <img src="/zlota/5.jpg" loading="lazy" alt="HUB Wolnych Technologii">
+                <h3 x-ref="heading">HUB Wolnych Technologii</h3>
+                <div x-ref="content"
+                  :style="
+                    expanded
+                    ? `max-height:${$refs.content.scrollHeight}px; --fade-start:100%`
+                    : `max-height:calc(23vh - ${$refs.heading.offsetHeight}px); --fade-start:40%`
+                  "
+                  class="card_content">
+                  <p>Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów.<br><span class="block text-xs leading-[0.8rem]">&nbsp;</span>
+                  Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. Musimy jeszcze porozmawiać o konkretnym opisie projektów. </p>
+                </div>
+                <button @click="expanded = !expanded" class="z-10 flex mt-1 items-center justify-center cursor-pointer bg-trans hover:brightness-105 transition-all duration-200">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-8 stroke-twentytwo tab:size-10 transition-all duration-500" :class="{ 'rotate-180': expanded }">
+                    <polyline points="21,9 12,16 3,9"></polyline>
+                  </svg>
+                </button>
+              </article>
+
+            </div>
+
+            <button class="carousel-arrow carousel-arrow-prev text-twentytwo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="14.5,18 8,12 14.5,6"></polyline>
+              </svg>
+            </button>
+
+            <button class="carousel-arrow carousel-arrow-next text-twentytwo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9.5,6 16,12 9.5,18"></polyline>
+              </svg>
+            </button>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+    <footer id="section6" class="section_intro relative overflow-hidden shadow-[0_0_0_1px_theme(colors.quin)]">
+
+      <div class="containme relative flex-col py-10 tab:py-14">
+        <div class="footer">
+          <p class="w-max font-hero font-bold leading-relaxed text-4xl text-bialy des:text-6xl">Kontakt</p>
+        </div>
+        <div class="footer ml-5 tab:ml-3 tab:mt-8">
+          <div>
+            <p class="font-hero font-bold leading-tight text-xl text-bialy mt-8 tab:font-semibold tab:text-2xl des:text-2xl">Dane fundacji:</p>
+            <p class="font-normal leading-tight text-sm text-bialy mt-2 tab:mt-6 des:text-base">Fundacja GOLDEN RATIO<br>
+            pl. Lotników Polskich 3A/10<br>
+            59-500 Złotoryja<br>
+            KRS 0001159147<br>
+            NIP 6941700715<br>
+            REGON 541288752
+            </p>
+          </div>
+          <div>
+            <p class="font-hero font-bold leading-tight text-xl text-bialy mt-8 tab:font-semibold tab:text-2xl des:text-2xl">Kontakt ogólny:</p>
+            <p class="font-normal leading-tight text-sm text-bialy mt-2 tab:mt-6 des:text-base">contact@goldenratio.com<br><br>
+            <span class="text-2xl des:text-3xl">✆</span>&nbsp;&nbsp;(+48) 999 999 999<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pon-pt 9:00-17:00<br>
+            </p>
+          </div>
+          <div>
+            <p class="font-hero font-bold leading-tight text-xl text-bialy mt-8 tab:font-semibold tab:text-2xl des:text-2xl">Kontakt dla mediów:</p>
+            <p class="font-normal leading-tight text-sm text-bialy mt-2 tab:mt-6 des:text-base">media@goldenratio.com</p>
+          </div>
+        </div>
+        <div class="footer ml-5 tab:ml-3 tab:mt-8">
+          <div>
+            <p class="font-hero font-bold leading-tight text-xl text-bialy mt-8 tab:font-semibold tab:text-2xl des:text-2xl">Śledź nas:</p>
+            <div class="flex flex-row items-center text-bialy gap-x-5 mt-2 tab:gap-x-8 des:gap-x-10">
+
+              <svg
+                viewBox="0 0 666.6667 666.66719"
+                class="cursor-pointer h-8 mt-2 tab:mt-4 tab:h-11 des:h-14 scale-105"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 666.66665,333.33334 C 666.66665,149.23868 517.42799,1.5e-5 333.33332,1.5e-5 149.23866,1.5e-5 0,149.23868 0,333.33334 0,489.66 107.62,620.82933 252.80799,656.85067 v -221.656 H 184.072 V 333.33334 h 68.73599 v -43.892 c 0,-113.456 51.344,-166.04266 162.73067,-166.04266 21.11733,0 57.55599,4.14 72.46266,8.28133 v 92.33867 c -7.868,-0.828 -21.532,-1.24267 -38.50933,-1.24267 -54.65733,0 -75.776,20.704 -75.776,74.53333 v 36.024 h 108.87866 l -18.70399,101.86133 h -90.17467 v 229.03066 c 165.048,-19.93466 292.95066,-160.46799 292.95066,-330.89199"
+                />
+              </svg>
+
+              <svg
+                viewBox="0 0 300 271"
+                class="cursor-pointer h-8 mt-2 tab:mt-4 tab:h-11 des:h-14"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z"
+                />
+              </svg>
+
+              <svg
+                viewBox="0 0 28.57 20"
+                class="cursor-pointer h-8 mt-2 tab:mt-4 tab:h-11 des:h-14"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 14.285156 0 C 14.285156 0 5.3502369 0.00029047429 3.1230469 0.59765625 C 1.8930469 0.92691325 0.92691325 1.8930369 0.59765625 3.1230469 C 0.00029047429 5.3502269 -7.4014868e-17 10 0 10 C 0 10 0.00029047429 14.649753 0.59765625 16.876953 C 0.92691325 18.106953 1.8930469 19.073144 3.1230469 19.402344 C 5.3502369 19.999744 14.285156 20 14.285156 20 C 14.285156 20 23.220166 19.999744 25.447266 19.402344 C 26.677266 19.073144 27.643456 18.106953 27.972656 16.876953 C 28.570056 14.649753 28.570312 10 28.570312 10 C 28.570312 10 28.567656 5.3502269 27.972656 3.1230469 C 27.643456 1.8930369 26.677266 0.92691325 25.447266 0.59765625 C 23.220166 0.00029047429 14.285156 -7.4014868e-17 14.285156 0 z M 11.425781 5.7148438 L 18.847656 10 L 11.425781 14.285156 L 11.425781 5.7148438 z "
+                />
+              </svg>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="fibonacci absolute bottom-10 right-8 scale-60 origin-bottom-right hidden tab:block tab:scale-100 tab:right-12 tab:bottom-14 des:tab:scale-100 des:bottom-18">
+          <div class="fibonacci__spiral">
+            <div class="fibonacci__square-1">
+              <div class="fibonacci__square-2">
+                <div class="fibonacci__square-3">
+                  <div class="fibonacci__square-4">
+                    <div class="fibonacci__square-5">
+                      <div class="fibonacci__square-6">
+                        <div class="fibonacci__square-7">
+                          <div class="fibonacci__square-8"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </footer>
+
+    <!-- <div id="app"></div> -->
+  </body>
+</html>
